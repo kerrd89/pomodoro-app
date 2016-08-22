@@ -1,0 +1,38 @@
+{
+  "name": "pomodoro-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-loader": "^6.2.5",
+    "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
+    "jquery": "^3.1.0",
+    "mocha": "^3.0.2",
+    "mocha-loader": "^0.7.1",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kerrd89/pomodoro-app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kerrd89/pomodoro-app/issues"
+  },
+  "homepage": "https://github.com/kerrd89/pomodoro-app#readme"
+}
