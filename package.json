@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack",
+    "test": "mocha",
+    "feature-test": "wdio wdio.conf.js",
+    "_comment": "./node_modules/.bin/wdio wdio.conf.js"
   },
   "dependencies": {},
   "devDependencies": {
@@ -17,6 +21,10 @@
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
+    "wdio-dot-reporter": "0.0.6",
+    "wdio-mocha-framework": "^0.4.0",
+    "wdio-selenium-standalone-service": "0.0.5",
+    "webdriverio": "^4.2.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
   },
