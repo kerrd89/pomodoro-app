@@ -12,12 +12,26 @@ describe('Pomodoro', function () {
     pomodoro.addTimer();
     assert.equal(pomodoro.timers.length, 1);
   });
-  it.skip('has a recursive function tick which decreases timeLeft by 1 second, waits a second, then runs itself', function() {
+  it('has a function called setStorage/getStorage which sets/gets the timeLeft to/from Storage', function() {
+    let startTime = Date.now() - 60000;
     var pomodoro = new Pomodoro();
-    pomodoro.addTimer();
+    pomodoro.addTimer(startTime);
+    pomodoro.timers[0].startTimer();
+    pomodoro.timers[0].pauseTimer();
+    pomodoro.setStorage();
+    pomodoro.getStorage();
+    assert.equal(pomodoro.timers[0].timeLeft, 1500000);
   });
-  it.skip('has a recursive function tick which decreases timeLeft by 1 second, waits a second, then runs itself', function() {
+  it('has a function called getStorage which returns nothing if there is nothing in storage', function() {
+    var pomodoro = new Pomodoro();
+    localStorage.clear();
+    pomodoro.getStorage();
+    assert.equal(pomodoro.timers.length, 0);
+  });
+  it('has a function called tick which when the timer has a status of running', function (){
     var pomodoro = new Pomodoro();
     pomodoro.addTimer();
+    pomodoro.timers[0].currentState = 'paused';
+    assert.isFunction(pomodoro.tick, 'return')
   });
 });
