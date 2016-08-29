@@ -1,0 +1,105 @@
+
+input[type=range]{
+  -webkit-appearance: none;
+  background: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-ms-track {
+  height: 5px;
+  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-moz-range-track {
+  height: 5px;
+  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 8px;
+  width: 5px;
+  background: #B8E986;
+  margin-top: -1.75px;
+  position: relative;
+}
+
+input[type=range]::-ms-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 8px;
+  width: 5px;
+  background: #B8E986;
+  margin-top: -1.75px;
+  position: relative;
+}
+
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 8px;
+  width: 5px;
+  background: #B8E986;
+  margin-top: -1.75px;
+  position: relative;
+}
+
+input[type=range]:focus {
+  outline: none;
+  &::-webkit-slider-thumb:after {
+    position: absolute;
+    top: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #eee;
+    border-radius: 5px;
+    color: #555;
+    padding: 5px 10px;
+    border: 2px solid #555;
+  }
+  &::-ms-thumb:after {
+    position: absolute;
+    top: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #eee;
+    border-radius: 5px;
+    color: #555;
+    padding: 5px 10px;
+    border: 2px solid #555;
+  }
+  &::-moz-range-thumb:after {
+    position: absolute;
+    top: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #eee;
+    border-radius: 5px;
+    color: #555;
+    padding: 5px 10px;
+    border: 2px solid #555;
+  }
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #B8E986;
+}
+
+input[type=range]:focus::-ms-track {
+  background: #B8E986;
+}
+
+input[type=range]:focus::-moz-range-track {
+  background: #B8E986;
+}
