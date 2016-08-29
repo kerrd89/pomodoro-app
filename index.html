@@ -4,17 +4,43 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="./lib/scss/reset.css">
   <meta name=viewport content="width=device-width, initial-scale=1">
-  <title>poopodoro</title>
+  <title>Time Box</title>
 </head>
 <body>
-  <section>
-    <h1>poopadoro</h1>
-    <article class="timer-js timer">time remaining:</article>
+  <section class='timers-list'>
+    <h1>Time Box</h1>
+    <p class="timer-js timer" hidden>time remaining:</p>
+    <ul>
+      <li>
+        <div class="work-timer-length-js work-timer-length"></div>
+        <p class="work-timer-name-js work-timer-name">work 1</p>
+      </li>
+      <li>
+        <div class="break-timer-length-js break-timer-length"></div>
+        <p class="break-timer-name-js break-timer-name">break 1</p>
+      </li>
+      <li>
+        <div class="work-timer-length-js work-timer-length"></div>
+        <p class="work-timer-name-js work-timer-name">work 2</p>
+      </li>
+      <li>
+        <div class="break-timer-length-js break-timer-length"></div>
+        <p class="break-timer-name-js break-timer-name">break 2</p>
+      </li>
+      <li>
+        <div class="work-timer-length-js work-timer-length"></div>
+        <p class="work-timer-name-js work-timer-name">work 3</p>
+      </li>
+      <li>
+        <div class="break-timer-length-js break-timer-length"></div>
+        <p class="break-timer-name-js break-timer-name">break 3</p>
+      </li>
+
+    </ul>
     <button class="start-button-js start-button">start</button>
-    <button class="options-button-js options-button">options</button>
-    <button class="pause-button-js pause-button">pause</button>
-    <button class="resume-button-js resume-button">resume</button>
-    <button class="reset-button-js reset-button">reset</button>
+    <button class="pause-button-js pause-button" hidden>pause</button>
+    <button class="resume-button-js resume-button" hidden>resume</button>
+    <button class="reset-button-js reset-button" hidden>reset</button>
   </section>
 
   <script src="main.bundle.js"></script>
