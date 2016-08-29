@@ -4,44 +4,42 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="./lib/scss/reset.css">
   <meta name=viewport content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
   <title>Time Box</title>
 </head>
 <body>
   <section class='timers-list'>
-    <h1>Time Box</h1>
-    <p class="timer-js timer" hidden>time remaining:</p>
+    <!-- <h1>Time Box</h1> -->
     <ul>
       <li>
         <div class="work-timer-length-js work-timer-length"></div>
-        <p class="work-timer-name-js work-timer-name active-timer-js">work 1</p>
+        <p class="work-timer-name-js work-timer-name active-timer-js">First work block</p>
+        <!-- <input type="range" min="5" max="90" step="5"> -->
       </li>
       <li>
         <div class="break-timer-length-js break-timer-length"></div>
-        <p class="break-timer-name-js break-timer-name inactive-timer-js">break 1</p>
+        <p class="break-timer-name-js break-timer-name inactive-timer-js">Take a break</p>
       </li>
       <li>
         <div class="work-timer-length-js work-timer-length"></div>
-        <p class="work-timer-name-js work-timer-name inactive-timer-js">work 2</p>
+        <p class="work-timer-name-js work-timer-name inactive-timer-js">Second work block</p>
       </li>
       <li>
         <div class="break-timer-length-js break-timer-length"></div>
-        <p class="break-timer-name-js break-timer-name inactive-timer-js">break 2</p>
-      </li>
-      <li>
-        <div class="work-timer-length-js work-timer-length"></div>
-        <p class="work-timer-name-js work-timer-name inactive-timer-js">work 3</p>
-      </li>
-      <li>
-        <div class="break-timer-length-js break-timer-length"></div>
-        <p class="break-timer-name-js break-timer-name inactive-timer-js">break 3</p>
+        <p class="break-timer-name-js break-timer-name inactive-timer-js">Take a break</p>
       </li>
 
     </ul>
-    <button class="start-button-js start-button">start</button>
-    <button class="pause-button-js pause-button" hidden>pause</button>
-    <button class="resume-button-js resume-button" hidden>resume</button>
-    <button class="reset-button-js reset-button" hidden>reset</button>
+    <div class="gradient"></div>
+    <section class="buttons">
+      <button class="start-button-js start-button">START</button>
+      <button class="reset-button-js reset-button" hidden>RESET</button>
+      <button class="pause-button-js pause-button" hidden></button>
+      <button class="resume-button-js resume-button" hidden></button>
+      <h2 class="current-time-js current-time"></h2>
+    </section>
   </section>
+
 
   <script src="main.bundle.js"></script>
 </body>
