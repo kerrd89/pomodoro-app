@@ -13,14 +13,12 @@ describe('Pomodoro', function () {
     assert.equal(pomodoro.timers.length, 1);
   });
   it('has a function called setStorage/getStorage which sets/gets the timeLeft to/from Storage', function() {
-    let startTime = Date.now() - 60000;
     var pomodoro = new Pomodoro();
-    pomodoro.addTimer(startTime);
-    pomodoro.timers[0].startTimer();
-    pomodoro.timers[0].pauseTimer();
+    pomodoro.addTimer(1, 'unstarted', 'work', 'get shit done');
     pomodoro.setStorage();
+    pomodoro.timers = [];
     pomodoro.getStorage();
-    assert.equal(pomodoro.timers[0].timeLeft, 1500000);
+    assert.equal(pomodoro.timers[0].timeLeft, 60000);
   });
   it('has a function called getStorage which returns nothing if there is nothing in storage', function() {
     var pomodoro = new Pomodoro();
@@ -33,5 +31,20 @@ describe('Pomodoro', function () {
     pomodoro.addTimer();
     pomodoro.timers[0].currentState = 'paused';
     assert.isFunction(pomodoro.tick, 'return')
+  });
+  it('has a function called timerStatus which returns classes based on currentState', function (){
+    var pomodoro = new Pomodoro();
+    pomodoro.addTimer(1, 'unstarted', 'work', 'get shit done');
+    pomodoro.timers[0].currentState = 'paused';
+    assert.equal(pomodoro.timerStatus(0), 'active-timer-js active-timer');
+    pomodoro.timers[0].currentState = 'unstarted';
+    assert.equal(pomodoro.timerStatus(0), 'inactive-timer inactive-timer-js');
+  });
+  it('has a function called theFirstOfCurrentState which returns the position of the first timer with that currentState', function (){
+    var pomodoro = new Pomodoro();
+    pomodoro.addTimer(1, 'unstarted', 'work', 'get shit done');
+    pomodoro.addTimer(1, 'paused', 'work', 'get shit done');
+    pomodoro.addTimer(1, 'paused', 'work', 'get shit done');
+    assert.equal(pomodoro.theFirstOfCurrentState('paused'), 1);
   });
 });

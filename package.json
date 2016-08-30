@@ -16,6 +16,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "jquery": "^3.1.0",
+    "jshint": "^2.9.3",
     "mocha": "^3.0.2",
     "mocha-loader": "^0.7.1",
     "node-sass": "^3.8.0",
