@@ -47,32 +47,29 @@
 	'use strict';
 
 	__webpack_require__(1);
-	__webpack_require__(5);
-	const $ = __webpack_require__(7);
-	const Pomodoro = __webpack_require__(6);
-	const Timer = __webpack_require__(8);
-	__webpack_require__(9);
+	var $ = __webpack_require__(5);
+	var Pomodoro = __webpack_require__(6);
+	var Timer = __webpack_require__(7);
 
+	var $startButton = $('.start-button-js');
+	var $pauseButton = $('.pause-button-js');
+	var $resumeButton = $('.resume-button-js');
+	var $resetButton = $('.reset-button-js');
+	var $input = $('input');
 
-	let $startButton = $('.start-button-js');
-	let $pauseButton = $('.pause-button-js');
-	let $resumeButton = $('.resume-button-js');
-	let $resetButton = $('.reset-button-js');
-	let $input = $('input');
+	var pomodoro = new Pomodoro();
 
-	let pomodoro = new Pomodoro();
-
-	$(document).ready(function() {
+	$(document).ready(function () {
 	  pomodoro.appendToPage();
 	  for (var i = 0; i < pomodoro.timers.length; i++) {
-	    if(pomodoro.timers[i].currentState === 'unstarted') {
+	    if (pomodoro.timers[i].currentState === 'unstarted') {
 	      return resetState();
 	    }
-	    if(pomodoro.timers[i].currentState === 'paused') {
+	    if (pomodoro.timers[i].currentState === 'paused') {
 	      pauseState();
 	      return pomodoro.updateTimer(i);
 	    }
-	    if(pomodoro.timers[i].currentState === 'running') {
+	    if (pomodoro.timers[i].currentState === 'running') {
 	      runningState();
 	      pomodoro.timers[i].startTimer();
 	      return pomodoro.tick(i);
@@ -80,8 +77,8 @@
 	  }
 	});
 
-	$('ul').on('change', 'input', function() {
-	  let value = this.value;
+	$('ul').on('change', 'input', function () {
+	  var value = this.value;
 	  $(this).siblings('.timer-length-js').text(value);
 	});
 
@@ -95,32 +92,32 @@
 	}
 
 	function startActiveTimer() {
-	  let i = pomodoro.theFirstOfCurrentState('unstarted');
+	  var i = pomodoro.theFirstOfCurrentState('unstarted');
 	  pomodoro.timers[i].startTimer();
 	  return pomodoro.tick(i);
 	}
 
-	$startButton.on('click', function() {
+	$startButton.on('click', function () {
 	  addTimers();
 	  startActiveTimer();
 	  runningState();
 	});
 
-	$pauseButton.on('click', function() {
-	  let i = pomodoro.theFirstOfCurrentState('running');
+	$pauseButton.on('click', function () {
+	  var i = pomodoro.theFirstOfCurrentState('running');
 	  pomodoro.timers[i].pauseTimer();
 	  pauseState();
 	  pomodoro.setStorage();
 	});
 
-	$resumeButton.on('click', function() {
-	  let i = pomodoro.theFirstOfCurrentState('paused');
+	$resumeButton.on('click', function () {
+	  var i = pomodoro.theFirstOfCurrentState('paused');
 	  pomodoro.timers[i].resumeTimer();
 	  pomodoro.tick(i);
 	  runningState();
 	});
 
-	$resetButton.on('click', function() {
+	$resetButton.on('click', function () {
 	  pomodoro.deleteAllTimers();
 	  resetState();
 	});
@@ -134,31 +131,28 @@
 	}
 
 	function runningState() {
-	 $('.start-button-js').hide();
-	 $('.reset-button-js').hide();
-	 $('.resume-button-js').hide();
-	 $('.pause-button-js').show();
-	 $('.current-time-js').show();
+	  $('.start-button-js').hide();
+	  $('.reset-button-js').hide();
+	  $('.resume-button-js').hide();
+	  $('.pause-button-js').show();
+	  $('.current-time-js').show();
 	}
 
 	function pauseState() {
-	 $('.start-button-js').hide();
-	 $('.pause-button-js').hide();
-	 $('.current-time-js').show();
-	 $('.reset-button-js').show();
-	 $('.resume-button-js').show();
+	  $('.start-button-js').hide();
+	  $('.pause-button-js').hide();
+	  $('.current-time-js').show();
+	  $('.reset-button-js').show();
+	  $('.resume-button-js').show();
 	}
 
 	function endState() {
-	 $('.start-button-js').hide();
-	 $('.pause-button-js').hide();
-	 $('.current-time-js').show();
-	 $('.reset-button-js').show();
-	 $('.resume-button-js').hide();
+	  $('.start-button-js').hide();
+	  $('.pause-button-js').hide();
+	  $('.current-time-js').show();
+	  $('.reset-button-js').show();
+	  $('.resume-button-js').hide();
 	}
-
-
-
 
 	// window.addEventListener('beforeunload', function() {
 	//   pomodoro.setStorage();
@@ -166,7 +160,6 @@
 	// window.addEventListener('load', function() {
 	//   pomodoro.getStorage();
 	// });
-
 
 /***/ },
 /* 1 */
@@ -184,8 +177,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./styles.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./styles.scss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./styles.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./styles.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -203,7 +196,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  font-family: 'Lato', sans-serif;\n  background: url(\"/lib/images/fields.jpg\");\n  background-size: cover;\n  z-index: -2; }\n\nh1 {\n  color: red;\n  text-align: center;\n  margin: 20px; }\n\n.current-time {\n  font-size: 7em;\n  opacity: .50;\n  color: white; }\n\n.timers-list {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 100vw;\n  height: 100vh;\n  max-width: 400px;\n  margin: auto; }\n\n.inactive-timer {\n  padding: 20px; }\n\n.active-timer {\n  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);\n  box-shadow: 0 25px 40px rgba(91, 91, 91, 0.3);\n  padding: 20px;\n  font-size: 1em;\n  color: white; }\n\n.gradient {\n  background-image: linear-gradient(-180deg, rgba(79, 227, 194, 0.5) 0%, rgba(215, 247, 183, 0.3) 100%);\n  height: 100vh;\n  width: 100vw;\n  position: fixed;\n  z-index: -1; }\n\nul {\n  background-image: linear-gradient(90deg, rgba(122, 110, 110, 0.6) 0%, rgba(94, 94, 94, 0.6) 100%);\n  width: 100%;\n  display: flex;\n  flex-direction: column; }\n\nli {\n  color: #F2EBBF;\n  align-items: center; }\n\nbutton {\n  border: none;\n  color: #F2EBBF;\n  font-family: lato;\n  background: rgba(121, 110, 110, 0.7); }\n\n.start-button {\n  margin: 5px;\n  font-size: 2em;\n  padding: 10px 5px;\n  width: 40%; }\n\n.pause-button, .resume-button, .reset-button {\n  margin-right: auto;\n  font-size: .8em;\n  width: 40%;\n  height: 70px;\n  width: 70px;\n  border-radius: 50px; }\n\n.pause-button {\n  background-image: url(\"/lib/images/pause.svg\");\n  background-size: cover; }\n\n.resume-button {\n  background-image: url(\"/lib/images/play.svg\");\n  background-size: cover; }\n\n.buttons {\n  margin-top: auto;\n  display: flex;\n  flex-direction: flex-row;\n  width: 100%;\n  justify-content: center;\n  align-items: flex-end; }\n\n.timer-length {\n  border-radius: 50px;\n  border: 3px solid #d7f7b7;\n  height: 24px;\n  width: 30px;\n  padding-top: 6px;\n  display: inline-block;\n  float: right;\n  text-align: center; }\n\n.work-timer-name,\n.break-timer-name {\n  display: inline-block; }\n\n.mid-timer-buttons {\n  display: flex;\n  flex-direction: column;\n  height: 100%; }\n\n.blink {\n  color: #e27575;\n  border-color: #e27575; }\n\ninput[type=range] {\n  -webkit-appearance: none;\n  background: none;\n  width: 98%;\n  margin-top: -10px; }\n\ninput[type=range]::-webkit-slider-runnable-track {\n  height: 5px;\n  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);\n  border: none;\n  border-radius: 3px; }\n\ninput[type=range]::-ms-track {\n  height: 5px;\n  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);\n  border: none;\n  border-radius: 3px; }\n\ninput[type=range]::-moz-range-track {\n  height: 5px;\n  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);\n  border: none;\n  border-radius: 3px; }\n\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  border-radius: 50px;\n  border: none;\n  height: 10px;\n  width: 10px;\n  background: #B8E986;\n  margin-top: -3px;\n  position: relative; }\n\ninput[type=range]::-ms-thumb {\n  -webkit-appearance: none;\n  border-radius: 50px;\n  border: none;\n  height: 10px;\n  width: 10px;\n  background: #B8E986;\n  margin-top: -3px;\n  position: relative; }\n\ninput[type=range]::-moz-range-thumb {\n  -webkit-appearance: none;\n  border: none;\n  height: 10px;\n  width: 10px;\n  border-radius: 50px;\n  background: #B8E986;\n  margin-top: -3px;\n  position: relative; }\n\ninput[type=range]:focus {\n  outline: none; }\n  input[type=range]:focus::-webkit-slider-thumb:after {\n    position: absolute;\n    top: -85px;\n    left: 50%;\n    transform: translateX(-50%);\n    background: #eee;\n    border-radius: 5px;\n    color: #555;\n    padding: 5px 10px;\n    border: 2px solid #555; }\n  input[type=range]:focus::-ms-thumb:after {\n    position: absolute;\n    top: -85px;\n    left: 50%;\n    transform: translateX(-50%);\n    background: #eee;\n    border-radius: 5px;\n    color: #555;\n    padding: 5px 10px;\n    border: 2px solid #555; }\n  input[type=range]:focus::-moz-range-thumb:after {\n    position: absolute;\n    top: -85px;\n    left: 50%;\n    transform: translateX(-50%);\n    background: #eee;\n    border-radius: 5px;\n    color: #555;\n    padding: 5px 10px;\n    border: 2px solid #555; }\n\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  background: #B8E986; }\n\ninput[type=range]:focus::-ms-track {\n  background: #B8E986; }\n\ninput[type=range]:focus::-moz-range-track {\n  background: #B8E986; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: \"Lato\", sans-serif;\n  background: url(\"/lib/images/wheat.jpg\");\n  background-size: cover;\n  z-index: -2;\n}\n\nh1 {\n  text-align: center;\n  margin: 20px;\n}\n\np {\n  display: inline-block;\n  word-wrap: break-word;\n  max-width: 100%;\n}\n\n.current-time {\n  font-size: 7em;\n  opacity: 0.50;\n  color: #FFFFFF;\n}\n\n.timers-list {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 100vw;\n  height: 100vh;\n  max-width: 400px;\n  margin: auto;\n}\n\n.inactive-timer {\n  padding: 20px;\n}\n\n.active-timer {\n  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);\n  box-shadow: 0 25px 40px rgba(91, 91, 91, 0.3);\n  padding: 20px;\n  font-size: 1em;\n  color: #FFFFFF;\n}\n\n.gradient {\n  background-image: linear-gradient(-180deg, rgba(79, 227, 194, 0.5) 0%, rgba(215, 247, 183, 0.3) 100%);\n  height: 100vh;\n  width: 100vw;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: -1;\n}\n\nul {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n}\n\nli {\n  background-image: linear-gradient(90deg, rgba(122, 110, 110, 0.6) 0%, rgba(94, 94, 94, 0.6) 100%);\n  color: #F2EBBF;\n  align-items: center;\n  transition-duration: 0.2s;\n}\n\nbutton {\n  border: none;\n  color: #F2EBBF;\n  font-family: \"Lato\", sans-serif;\n  background: rgba(121, 110, 110, 0.5);\n}\n\n.start-button {\n  margin: 10px;\n  font-size: 2em;\n  padding: 10px 5px;\n  width: 40%;\n}\n\n.pause-button,\n.reset-button,\n.resume-button {\n  margin-right: auto;\n  font-size: 0.8em;\n  width: 40%;\n  height: 70px;\n  width: 70px;\n  border-radius: 50px;\n  margin: 0 10px 10px;\n  transition-duration: 0.2s;\n}\n\n.pause-button {\n  background-image: url(\"/lib/images/pause.svg\");\n  background-size: cover;\n}\n\n.resume-button {\n  background-image: url(\"/lib/images/play.svg\");\n  background-size: cover;\n}\n\n.buttons {\n  margin-top: auto;\n  display: flex;\n  flex-direction: flex-row;\n  width: 100%;\n  justify-content: center;\n  align-items: center;\n}\n\n.timer-length {\n  border-radius: 50px;\n  border: 3px solid #d7f7b7;\n  height: 24px;\n  width: 30px;\n  padding-top: 6px;\n  display: inline-block;\n  float: right;\n  text-align: center;\n}\n\n.break-timer-name,\n.work-timer-name {\n  display: inline-block;\n}\n\n.mid-timer-buttons {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n.pause-button:hover,\n.reset-button:hover,\n.resume-button:hover,\n.start-button:hover {\n  background-color: rgba(121, 110, 110, 0.7);\n  box-shadow: 0 5px 15px rgba(91, 91, 91, 0.3);\n}\n\np:focus {\n  font-size: 1.1em;\n  outline: none;\n  color: #d7f7b7;\n}\n\n.blink {\n  color: #e27575;\n  border-color: #e27575;\n}\n\n.active-timer:hover,\n.inactive-timer:hover {\n  width: 91%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiL1VzZXJzL2JsYWtld29yc2xleS90dXJpbmcvbW9kLTIvcHJvamVjdHMvcG9tb2Rvcm8tYXBwL2xpYi9zY3NzL3N0eWxlcy5zY3NzIiwic291cmNlcyI6WyIvVXNlcnMvYmxha2V3b3JzbGV5L3R1cmluZy9tb2QtMi9wcm9qZWN0cy9wb21vZG9yby1hcHAvbGliL3Njc3Mvc3R5bGVzLnNjc3MiXSwic291cmNlc0NvbnRlbnQiOlsiJHByaW1hcnktdGV4dC1jb2xvcjogI0YyRUJCRjtcbiRwcmltYXJ5LXRpbWVyLWNvbG9yOiAjZDdmN2I3O1xuJGhpZ2hsaWdodGVkLXRleHQtY29sb3I6ICNGRkZGRkY7XG4kYnV0dG9uLXByaW1hcnktY29sb3I6IHJnYmEoMTIxLDExMCwxMTAsMC41MCk7XG4kYnV0dG9uLXNlY29uZGFyeS1jb2xvcjogcmdiYSgxMjEsMTEwLDExMCwwLjcwKTtcbiRwcmltYXJ5LWJveC1zaGFkb3c6IDAgMjVweCA0MHB4IHJnYmEoOTEsIDkxLCA5MSwgMC4zKTtcbiRzbWFsbGVyLWJveC1zaGFkb3c6IDAgNXB4IDE1cHggcmdiYSg5MSwgOTEsIDkxLCAwLjMpO1xuJHByaW1hcnktZm9udC1zdHlsZTogJ0xhdG8nLCBzYW5zLXNlcmlmO1xuXG5cbmJvZHkge1xuICBmb250LWZhbWlseTogJHByaW1hcnktZm9udC1zdHlsZTtcbiAgYmFja2dyb3VuZDogdXJsKCcvbGliL2ltYWdlcy93aGVhdC5qcGcnKTtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgei1pbmRleDogLTI7XG59XG5cbmgxIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW46IDIwcHg7XG59XG5cbnAge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHdvcmQtd3JhcDogYnJlYWstd29yZDtcbiAgbWF4LXdpZHRoOiAxMDAlO1xufVxuXG4uY3VycmVudC10aW1lIHtcbiAgZm9udC1zaXplOiA3ZW07XG4gIG9wYWNpdHk6IDAuNTA7XG4gIGNvbG9yOiAkaGlnaGxpZ2h0ZWQtdGV4dC1jb2xvcjtcbn1cblxuLnRpbWVycy1saXN0IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBtYXgtd2lkdGg6IDQwMHB4O1xuICBtYXJnaW46IGF1dG87XG59XG5cbi5pbmFjdGl2ZS10aW1lciB7XG4gIHBhZGRpbmc6IDIwcHg7XG59XG5cbi5hY3RpdmUtdGltZXIge1xuICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsICM3QTZFNkUgMCUsICM1RTVFNUUgMTAwJSk7XG4gIGJveC1zaGFkb3c6ICRwcmltYXJ5LWJveC1zaGFkb3c7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBjb2xvcjogJGhpZ2hsaWdodGVkLXRleHQtY29sb3I7XG59XG5cbi5ncmFkaWVudCB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IGxpbmVhci1ncmFkaWVudCgtMTgwZGVnLCByZ2JhKDc5LDIyNywxOTQsMC41MCkgMCUsIHJnYmEoMjE1LDI0NywxODMsMC4zMCkgMTAwJSk7XG4gIGhlaWdodDogMTAwdmg7XG4gIHdpZHRoOiAxMDB2dztcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHotaW5kZXg6IC0xO1xufVxuXG51bCB7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuXG5saSB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgcmdiYSgxMjIsIDExMCwgMTEwLCAwLjYpIDAlLCByZ2JhKDk0LCA5NCwgOTQsIDAuNikgMTAwJSk7XG4gIGNvbG9yOiAkcHJpbWFyeS10ZXh0LWNvbG9yO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICB0cmFuc2l0aW9uLWR1cmF0aW9uOiAwLjJzO1xufVxuXG5idXR0b24ge1xuICBib3JkZXI6IG5vbmU7XG4gIGNvbG9yOiAkcHJpbWFyeS10ZXh0LWNvbG9yO1xuICBmb250LWZhbWlseTogJHByaW1hcnktZm9udC1zdHlsZTtcbiAgYmFja2dyb3VuZDogJGJ1dHRvbi1wcmltYXJ5LWNvbG9yO1xufVxuXG4uc3RhcnQtYnV0dG9uIHtcbiAgbWFyZ2luOiAxMHB4O1xuICBmb250LXNpemU6IDJlbTtcbiAgcGFkZGluZzogMTBweCA1cHg7XG4gIHdpZHRoOiA0MCU7XG59XG5cbi5wYXVzZS1idXR0b24sXG4ucmVzZXQtYnV0dG9uLFxuLnJlc3VtZS1idXR0b24ge1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gIGZvbnQtc2l6ZTogMC44ZW07XG4gIHdpZHRoOiA0MCU7XG4gIGhlaWdodDogNzBweDtcbiAgd2lkdGg6IDcwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwcHg7XG4gIG1hcmdpbjogMCAxMHB4IDEwcHg7XG4gIHRyYW5zaXRpb24tZHVyYXRpb246IDAuMnM7XG59XG5cbi5wYXVzZS1idXR0b24ge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJy9saWIvaW1hZ2VzL3BhdXNlLnN2ZycpO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xufVxuXG4ucmVzdW1lLWJ1dHRvbiB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnL2xpYi9pbWFnZXMvcGxheS5zdmcnKTtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3Zlcjtcbn1cblxuLmJ1dHRvbnMge1xuICBtYXJnaW4tdG9wOiBhdXRvO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogZmxleC1yb3c7XG4gIHdpZHRoOiAxMDAlO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLnRpbWVyLWxlbmd0aCB7XG4gIGJvcmRlci1yYWRpdXM6IDUwcHg7XG4gIGJvcmRlcjogM3B4IHNvbGlkICRwcmltYXJ5LXRpbWVyLWNvbG9yO1xuICBoZWlnaHQ6IDI0cHg7XG4gIHdpZHRoOiAzMHB4O1xuICBwYWRkaW5nLXRvcDogNnB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGZsb2F0OiByaWdodDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uYnJlYWstdGltZXItbmFtZSxcbi53b3JrLXRpbWVyLW5hbWUge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG59XG5cbi5taWQtdGltZXItYnV0dG9ucyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGhlaWdodDogMTAwJTtcbn1cbi8vIFRvZ2dsZSBDbGFzc2VzXG4ucGF1c2UtYnV0dG9uOmhvdmVyLFxuLnJlc2V0LWJ1dHRvbjpob3Zlcixcbi5yZXN1bWUtYnV0dG9uOmhvdmVyLFxuLnN0YXJ0LWJ1dHRvbjpob3ZlciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRidXR0b24tc2Vjb25kYXJ5LWNvbG9yO1xuICBib3gtc2hhZG93OiAkc21hbGxlci1ib3gtc2hhZG93O1xufVxuXG5wOmZvY3VzIHtcbiAgZm9udC1zaXplOiAxLjFlbTtcbiAgb3V0bGluZTogbm9uZTtcbiAgY29sb3I6ICRwcmltYXJ5LXRpbWVyLWNvbG9yO1xufVxuXG4uYmxpbmsge1xuICBjb2xvcjogI2UyNzU3NTtcbiAgYm9yZGVyLWNvbG9yOiAjZTI3NTc1O1xufVxuXG4uYWN0aXZlLXRpbWVyOmhvdmVyLFxuLmluYWN0aXZlLXRpbWVyOmhvdmVyIHtcbiAgd2lkdGg6IDkxJTtcbiAgLy8gYmFja2dyb3VuZDogcmdiYSg2OSwgNjksIDY5LCAwLjM4KTtcbn1cblxuLy8gQGltcG9ydCAnc2xpZGVyJ1xuIl0sIm1hcHBpbmdzIjoiQUFVQSxBQUFBLElBQUksQ0FBQztFQUNILFdBQVcsRUFKUSxNQUFNLEVBQUUsVUFBVTtFQUtyQyxVQUFVLEVBQUUsNEJBQUc7RUFDZixlQUFlLEVBQUUsS0FBTTtFQUN2QixPQUFPLEVBQUUsRUFBRyxHQUNiOztBQUVELEFBQUEsRUFBRSxDQUFDO0VBQ0QsVUFBVSxFQUFFLE1BQU87RUFDbkIsTUFBTSxFQUFFLElBQUssR0FDZDs7QUFFRCxBQUFBLENBQUMsQ0FBQztFQUNBLE9BQU8sRUFBRSxZQUFhO0VBQ3RCLFNBQVMsRUFBRSxVQUFXO0VBQ3RCLFNBQVMsRUFBRSxJQUFLLEdBQ2pCOztBQUVELEFBQUEsYUFBYSxDQUFDO0VBQ1osU0FBUyxFQUFFLEdBQUk7RUFDZixPQUFPLEVBQUUsSUFBSztFQUNkLEtBQUssRUE3QmtCLE9BQU8sR0E4Qi9COztBQUVELEFBQUEsWUFBWSxDQUFDO0VBQ1gsT0FBTyxFQUFFLElBQUs7RUFDZCxjQUFjLEVBQUUsTUFBTztFQUN2QixXQUFXLEVBQUUsTUFBTztFQUNwQixLQUFLLEVBQUUsS0FBTTtFQUNiLE1BQU0sRUFBRSxLQUFNO0VBQ2QsU0FBUyxFQUFFLEtBQU07RUFDakIsTUFBTSxFQUFFLElBQUssR0FDZDs7QUFFRCxBQUFBLGVBQWUsQ0FBQztFQUNkLE9BQU8sRUFBRSxJQUFLLEdBQ2Y7O0FBRUQsQUFBQSxhQUFhLENBQUM7RUFDWixnQkFBZ0IsRUFBRSxnREFBZTtFQUNqQyxVQUFVLEVBN0NTLENBQUMsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLHFCQUFJO0VBOENuQyxPQUFPLEVBQUUsSUFBSztFQUNkLFNBQVMsRUFBRSxHQUFJO0VBQ2YsS0FBSyxFQW5Ea0IsT0FBTyxHQW9EL0I7O0FBRUQsQUFBQSxTQUFTLENBQUM7RUFDUixnQkFBZ0IsRUFBRSxtRkFBZTtFQUNqQyxNQUFNLEVBQUUsS0FBTTtFQUNkLEtBQUssRUFBRSxLQUFNO0VBQ2IsUUFBUSxFQUFFLEtBQU07RUFDaEIsR0FBRyxFQUFFLENBQUU7RUFDUCxJQUFJLEVBQUUsQ0FBRTtFQUNSLE9BQU8sRUFBRSxFQUFHLEdBQ2I7O0FBRUQsQUFBQSxFQUFFLENBQUM7RUFDRCxLQUFLLEVBQUUsSUFBSztFQUNaLE9BQU8sRUFBRSxJQUFLO0VBQ2QsY0FBYyxFQUFFLE1BQU8sR0FDeEI7O0FBRUQsQUFBQSxFQUFFLENBQUM7RUFDRCxnQkFBZ0IsRUFBRSwrRUFBZTtFQUNqQyxLQUFLLEVBMUVjLE9BQU87RUEyRTFCLFdBQVcsRUFBRSxNQUFPO0VBQ3BCLG1CQUFtQixFQUFFLElBQUssR0FDM0I7O0FBRUQsQUFBQSxNQUFNLENBQUM7RUFDTCxNQUFNLEVBQUUsSUFBSztFQUNiLEtBQUssRUFqRmMsT0FBTztFQWtGMUIsV0FBVyxFQTNFUSxNQUFNLEVBQUUsVUFBVTtFQTRFckMsVUFBVSxFQWhGVyx3QkFBSSxHQWlGMUI7O0FBRUQsQUFBQSxhQUFhLENBQUM7RUFDWixNQUFNLEVBQUUsSUFBSztFQUNiLFNBQVMsRUFBRSxHQUFJO0VBQ2YsT0FBTyxFQUFFLFFBQVM7RUFDbEIsS0FBSyxFQUFFLEdBQUksR0FDWjs7QUFFRCxBQUFBLGFBQWE7QUFDYixBQUFBLGFBQWE7QUFDYixBQUFBLGNBQWMsQ0FBQztFQUNiLFlBQVksRUFBRSxJQUFLO0VBQ25CLFNBQVMsRUFBRSxLQUFNO0VBQ2pCLEtBQUssRUFBRSxHQUFJO0VBQ1gsTUFBTSxFQUFFLElBQUs7RUFDYixLQUFLLEVBQUUsSUFBSztFQUNaLGFBQWEsRUFBRSxJQUFLO0VBQ3BCLE1BQU0sRUFBRSxXQUFZO0VBQ3BCLG1CQUFtQixFQUFFLElBQUssR0FDM0I7O0FBRUQsQUFBQSxhQUFhLENBQUM7RUFDWixnQkFBZ0IsRUFBRSw0QkFBRztFQUNyQixlQUFlLEVBQUUsS0FBTSxHQUN4Qjs7QUFFRCxBQUFBLGNBQWMsQ0FBQztFQUNiLGdCQUFnQixFQUFFLDJCQUFHO0VBQ3JCLGVBQWUsRUFBRSxLQUFNLEdBQ3hCOztBQUVELEFBQUEsUUFBUSxDQUFDO0VBQ1AsVUFBVSxFQUFFLElBQUs7RUFDakIsT0FBTyxFQUFFLElBQUs7RUFDZCxjQUFjLEVBQUUsUUFBUztFQUN6QixLQUFLLEVBQUUsSUFBSztFQUNaLGVBQWUsRUFBRSxNQUFPO0VBQ3hCLFdBQVcsRUFBRSxNQUFPLEdBQ3JCOztBQUVELEFBQUEsYUFBYSxDQUFDO0VBQ1osYUFBYSxFQUFFLElBQUs7RUFDcEIsTUFBTSxFQUFFLEdBQUcsQ0FBQyxLQUFLLENBOUhHLE9BQU87RUErSDNCLE1BQU0sRUFBRSxJQUFLO0VBQ2IsS0FBSyxFQUFFLElBQUs7RUFDWixXQUFXLEVBQUUsR0FBSTtFQUNqQixPQUFPLEVBQUUsWUFBYTtFQUN0QixLQUFLLEVBQUUsS0FBTTtFQUNiLFVBQVUsRUFBRSxNQUFPLEdBQ3BCOztBQUVELEFBQUEsaUJBQWlCO0FBQ2pCLEFBQUEsZ0JBQWdCLENBQUM7RUFDZixPQUFPLEVBQUUsWUFBYSxHQUN2Qjs7QUFFRCxBQUFBLGtCQUFrQixDQUFDO0VBQ2pCLE9BQU8sRUFBRSxJQUFLO0VBQ2QsY0FBYyxFQUFFLE1BQU87RUFDdkIsTUFBTSxFQUFFLElBQUssR0FDZDs7QUFFRCxBQUFhLGFBQUEsQUFBQSxNQUFNO0FBQ25CLEFBQWEsYUFBQSxBQUFBLE1BQU07QUFDbkIsQUFBYyxjQUFBLEFBQUEsTUFBTTtBQUNwQixBQUFhLGFBQUEsQUFBQSxNQUFNLENBQUM7RUFDbEIsZ0JBQWdCLEVBbkpPLHdCQUFJO0VBb0ozQixVQUFVLEVBbEpTLENBQUMsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLHFCQUFJLEdBbUpuQzs7QUFFRCxBQUFDLENBQUEsQUFBQSxNQUFNLENBQUM7RUFDTixTQUFTLEVBQUUsS0FBTTtFQUNqQixPQUFPLEVBQUUsSUFBSztFQUNkLEtBQUssRUE3SmUsT0FBTyxHQThKNUI7O0FBRUQsQUFBQSxNQUFNLENBQUM7RUFDTCxLQUFLLEVBQUUsT0FBUTtFQUNmLFlBQVksRUFBRSxPQUFRLEdBQ3ZCOztBQUVELEFBQWEsYUFBQSxBQUFBLE1BQU07QUFDbkIsQUFBZSxlQUFBLEFBQUEsTUFBTSxDQUFDO0VBQ3BCLEtBQUssRUFBRSxHQUFJLEdBRVoiLCJuYW1lcyI6W119 */", ""]);
 
 	// exports
 
@@ -518,217 +511,6 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	const Pomodoro = __webpack_require__(6);
-
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	const $ = __webpack_require__(7);
-	const Timer = __webpack_require__(8);
-	let $timer = $('.active-timer-js');
-	let audioBeep = new Audio('./lib/sounds/beep.mp3');
-	let audioTwoMin = new Audio('./lib/sounds/sound.mp3');
-
-	// let setIntervalID = setInterval(this.tick, 1000);
-
-
-	class Pomodoro {
-	  constructor() {
-	    this.timers = [];
-	  }
-
-	  theFirstOfCurrentState(state) {
-	    for (var i = 0; i < this.timers.length; i++) {
-	      if(this.timers[i].currentState === state) return i;
-	    }
-	  }
-
-
-	  addTimer(timeLeft, currentState, type, goal) {
-	    let timer = new Timer({timeLeft: timeLeft, currentState: currentState, type: type, goal: goal});
-	    this.timers.push(timer);
-	  }
-
-	  updateTimer(n) {
-	    let minutes = Math.floor(this.timers[n].timeLeft/1000/60);
-	    let seconds = Math.floor((this.timers[n].timeLeft%60000)/1000);
-	    let milliSeconds = Math.floor((this.timers[n].timeLeft%60000)%1000);
-	    if(minutes === 0 && seconds === 20) {
-	      $('.active-timer-js').children('.timer-length-js').addClass('blink');
-	    }
-	    if(minutes === 0 && seconds === 5) {
-	      audioBeep.play();
-	    }
-	    if(minutes === 0 && seconds === 3) {
-	      audioBeep.play();
-	    }
-	    if(minutes === 0 && seconds === 1) {
-	      audioBeep.play();
-	    }
-	    if(minutes === 2 && seconds === 9) {
-	      audioTwoMin.play();
-	    }
-	    if( seconds < 10) { seconds = ('0' + seconds); }
-	    if( milliSeconds < 10) { milliSeconds = ('0' + milliSeconds); }
-	    $('.current-time-js').text(`${minutes}:${seconds}`);
-	    if(minutes >= 1) {
-	      $('.active-timer-js').children('.timer-length-js').text(minutes);
-	    } else {
-	      $('.active-timer-js').children('.timer-length-js').text(seconds);
-	    }
-	  }
-
-
-	  tick(n){
-	    if(this.timers[n].currentState !== 'running') return;
-	    this.timers[n].updateTimeLeft();
-	    this.setStorage();
-	    this.updateTimer(n);
-	    this.ifTimeExpired(n);
-	    setTimeout(this.tick.bind(this), 10, n);
-	  }
-
-	  timerEndValues(n) {
-	    this.timers[n].currentState = 'finished';
-	    this.timers[n].timeLeft = 0;
-	  }
-
-	  nextTimer(n) {
-	    return n + 1;
-	  }
-
-	  ifTimeExpired(n) {
-	    if(this.timers[n].timeLeft <= 0) {
-	      $('.active-timer-js').children('.timer-length-js').text(0);
-	      if(this.timers.length - 1 === n) {
-	      this.endState();
-	      $('.active-timer-js').children('.timer-length-js').text('0:00');
-	    }
-	      let nextTimer = this.nextTimer(n);
-	      this.timerEndValues(n);
-	      this.timers[nextTimer].currentState = 'unstarted';
-	      this.timers[nextTimer].startTimer();
-	      this.changeActiveTimer(n);
-	      return this.tick(nextTimer);
-	    }
-	  }
-
-	  changeActiveTimer(n) {
-	    var currentLi = n+1;
-	    var nextLi = n+2;
-	    $('ul li:nth-child('+ nextLi + ')').addClass('active-timer');
-	    $('ul li:nth-child(' + nextLi +')').addClass('active-timer-js');
-	    $('ul li:nth-child(' + currentLi + ')').addClass('inactive-timer-js');
-	    $('ul li:nth-child(' + currentLi + ')').addClass('inactive-timer');
-	    $('ul li:nth-child(' + currentLi + ')').addClass('finished');
-	    $('ul li:nth-child(' + currentLi + ')').removeClass('active-timer-js');
-	    $('ul li:nth-child(' + currentLi + ')').removeClass('active-timer');
-	  }
-
-	  deleteAllTimers(){
-	    this.timers = [];
-	    this.deleteAllTimersOnPage();
-	    localStorage.clear();
-	    this.appendToPage();
-	  }
-
-	  deleteAllTimersOnPage(){
-	    $('ul').children().remove();
-	  }
-
-
-	  timerStatus(i) {
-	    if (this.timers[i].currentState === 'running') { return 'active-timer-js active-timer'; }
-	    if (this.timers[i].currentState === 'paused') { return 'active-timer-js active-timer'; }
-	    else { return 'inactive-timer inactive-timer-js'; }
-	  }
-
-	  appendToPage() {
-	    this.getStorage();
-	    if (this.timers.length === 0) {
-	      this.appendToPageIfNothingInStorage();
-	    } else {
-	      this.appendStorageTimersToPage();
-	    }
-	  }
-
-	  setStorage(){
-	    localStorage.clear();
-	    localStorage.setItem('timers', JSON.stringify(this.timers));
-	  }
-
-	  getStorage() {
-	    let timers = JSON.parse(localStorage.getItem('timers'));
-	    if (!timers) return;
-	    for(var i = 0; i < timers.length; i++) {
-	      this.addTimer(timers[i].timeLeft/60000, timers[i].currentState, timers[i].type, timers[i].goal);
-	    }
-	  }
-
-	  appendStorageTimersToPage() {
-	    for (let i = 0; i < this.timers.length; i++) {
-	      if (this.timers[i].type === 'work') {
-	        let timeLeft = Math.floor(this.timers[i].timeLeft/60000);
-	        $('ul').append(
-	          `
-	          <li class="${this.timerStatus(i)}">
-	          <p class="work-timer-name-js work-timer-name">${this.timers[i].goal}</p>
-	          <div class="timer-length timer-length-js">${timeLeft}</div>
-	          </li>
-	          `);
-	        }
-	        else {
-	          let timeLeft = Math.floor(this.timers[i].timeLeft/60000);
-	          $('ul').append(
-	            `
-	            <li class="${this.timerStatus(i)}">
-	            <p class="break-timer-name-js break-timer-name inactive-timer-js">${this.timers[i].goal}</p>
-	            <div class="timer-length timer-length-js">${timeLeft}</div>
-	            </li>
-	            `
-	          );
-	        }
-	      }
-	    }
-
-
-	  appendToPageIfNothingInStorage() {
-	    $('ul').append(`
-	      <li class="active-timer-js active-timer">
-	      <p class="work-timer-name-js work-timer-name" contenteditable>First work block</p>
-	      <div class="timer-length timer-length-js">25</div>
-	      <input type="range" min="5" max="60" step="5" value="25" class="work-timer-length-js work-timer-length">
-	      </li>
-	      <li class="inactive-timer-js inactive-timer">
-	      <p class="break-timer-name-js break-timer-name inactive-timer-js" contenteditable>Take a break</p>
-	      <div class="timer-length timer-length-js">5</div>
-	      <input type="range" min="1" max="15" step="1" value="5" class="break-timer-length-js break-timer-length">
-	      </li>
-	      <li class="inactive-timer-js inactive-timer">
-	      <p class="work-timer-name-js work-timer-name inactive-timer-js" contenteditable>Second work block</p>
-	      <div class="timer-length timer-length-js">25</div>
-	      <input type="range" min="5" max="60" step="5" value="25" class="work-timer-length-js work-timer-length">
-	      </li>
-	      <li class="inactive-timer-js inactive-timer">
-	      <p class="break-timer-name-js break-timer-name inactive-timer-js" contenteditable>Take a break</p>
-	      <div class="timer-length timer-length-js">5</div>
-	      <input type="range" min="1" max="15" step="1" value="5" class="break-timer-length-js break-timer-length">
-	      </li>
-	      `);
-	    }
-	}
-
-	module.exports = Pomodoro;
-
-
-/***/ },
-/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -10808,11 +10590,218 @@
 
 
 /***/ },
-/* 8 */
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var $ = __webpack_require__(5);
+	var Timer = __webpack_require__(7);
+	var $timer = $('.active-timer-js');
+	var audioBeep = new Audio('./lib/sounds/beep.mp3');
+	var audioTwoMin = new Audio('./lib/sounds/sound.mp3');
+
+	// let setIntervalID = setInterval(this.tick, 1000);
+
+
+	var Pomodoro = function () {
+	  function Pomodoro() {
+	    _classCallCheck(this, Pomodoro);
+
+	    this.timers = [];
+	  }
+
+	  _createClass(Pomodoro, [{
+	    key: 'theFirstOfCurrentState',
+	    value: function theFirstOfCurrentState(state) {
+	      for (var i = 0; i < this.timers.length; i++) {
+	        if (this.timers[i].currentState === state) return i;
+	      }
+	    }
+	  }, {
+	    key: 'addTimer',
+	    value: function addTimer(timeLeft, currentState, type, goal) {
+	      var timer = new Timer({ timeLeft: timeLeft, currentState: currentState, type: type, goal: goal });
+	      this.timers.push(timer);
+	    }
+	  }, {
+	    key: 'updateTimer',
+	    value: function updateTimer(n) {
+	      var minutes = Math.floor(this.timers[n].timeLeft / 1000 / 60);
+	      var seconds = Math.floor(this.timers[n].timeLeft % 60000 / 1000);
+	      var milliSeconds = Math.floor(this.timers[n].timeLeft % 60000 % 1000);
+	      if (minutes === 0 && seconds === 20) {
+	        $('.active-timer-js').children('.timer-length-js').addClass('blink');
+	      }
+	      if (minutes === 0 && seconds === 5) {
+	        audioBeep.play();
+	      }
+	      if (minutes === 0 && seconds === 3) {
+	        audioBeep.play();
+	      }
+	      if (minutes === 0 && seconds === 1) {
+	        audioBeep.play();
+	      }
+	      if (minutes === 2 && seconds === 9) {
+	        audioTwoMin.play();
+	      }
+	      if (seconds < 10) {
+	        seconds = '0' + seconds;
+	      }
+	      if (milliSeconds < 10) {
+	        milliSeconds = '0' + milliSeconds;
+	      }
+	      $('.current-time-js').text(minutes + ':' + seconds);
+	      if (minutes >= 1) {
+	        $('.active-timer-js').children('.timer-length-js').text(minutes);
+	      } else {
+	        $('.active-timer-js').children('.timer-length-js').text(seconds);
+	      }
+	    }
+	  }, {
+	    key: 'tick',
+	    value: function tick(n) {
+	      if (this.timers[n].currentState !== 'running') return;
+	      this.timers[n].updateTimeLeft();
+	      this.setStorage();
+	      this.updateTimer(n);
+	      this.ifTimeExpired(n);
+	      setTimeout(this.tick.bind(this), 10, n);
+	    }
+	  }, {
+	    key: 'timerEndValues',
+	    value: function timerEndValues(n) {
+	      this.timers[n].currentState = 'finished';
+	      this.timers[n].timeLeft = 0;
+	    }
+	  }, {
+	    key: 'nextTimer',
+	    value: function nextTimer(n) {
+	      return n + 1;
+	    }
+	  }, {
+	    key: 'ifTimeExpired',
+	    value: function ifTimeExpired(n) {
+	      if (this.timers[n].timeLeft <= 0) {
+	        $('.active-timer-js').children('.timer-length-js').text(0);
+	        if (this.timers.length - 1 === n) {
+	          this.endState();
+	          $('.active-timer-js').children('.timer-length-js').text('0:00');
+	        }
+	        var nextTimer = this.nextTimer(n);
+	        this.timerEndValues(n);
+	        this.timers[nextTimer].currentState = 'unstarted';
+	        this.timers[nextTimer].startTimer();
+	        this.changeActiveTimer(n);
+	        return this.tick(nextTimer);
+	      }
+	    }
+	  }, {
+	    key: 'changeActiveTimer',
+	    value: function changeActiveTimer(n) {
+	      var currentLi = n + 1;
+	      var nextLi = n + 2;
+	      $('ul li:nth-child(' + nextLi + ')').addClass('active-timer');
+	      $('ul li:nth-child(' + nextLi + ')').addClass('active-timer-js');
+	      $('ul li:nth-child(' + currentLi + ')').addClass('inactive-timer-js');
+	      $('ul li:nth-child(' + currentLi + ')').addClass('inactive-timer');
+	      $('ul li:nth-child(' + currentLi + ')').addClass('finished');
+	      $('ul li:nth-child(' + currentLi + ')').removeClass('active-timer-js');
+	      $('ul li:nth-child(' + currentLi + ')').removeClass('active-timer');
+	    }
+	  }, {
+	    key: 'deleteAllTimers',
+	    value: function deleteAllTimers() {
+	      this.timers = [];
+	      this.deleteAllTimersOnPage();
+	      localStorage.clear();
+	      this.appendToPage();
+	    }
+	  }, {
+	    key: 'deleteAllTimersOnPage',
+	    value: function deleteAllTimersOnPage() {
+	      $('ul').children().remove();
+	    }
+	  }, {
+	    key: 'timerStatus',
+	    value: function timerStatus(i) {
+	      if (this.timers[i].currentState === 'running') {
+	        return 'active-timer-js active-timer';
+	      }
+	      if (this.timers[i].currentState === 'paused') {
+	        return 'active-timer-js active-timer';
+	      } else {
+	        return 'inactive-timer inactive-timer-js';
+	      }
+	    }
+	  }, {
+	    key: 'appendToPage',
+	    value: function appendToPage() {
+	      this.getStorage();
+	      if (this.timers.length === 0) {
+	        this.appendToPageIfNothingInStorage();
+	      } else {
+	        this.appendStorageTimersToPage();
+	      }
+	    }
+	  }, {
+	    key: 'setStorage',
+	    value: function setStorage() {
+	      localStorage.clear();
+	      localStorage.setItem('timers', JSON.stringify(this.timers));
+	    }
+	  }, {
+	    key: 'getStorage',
+	    value: function getStorage() {
+	      var timers = JSON.parse(localStorage.getItem('timers'));
+	      if (!timers) return;
+	      for (var i = 0; i < timers.length; i++) {
+	        this.addTimer(timers[i].timeLeft / 60000, timers[i].currentState, timers[i].type, timers[i].goal);
+	      }
+	    }
+	  }, {
+	    key: 'appendStorageTimersToPage',
+	    value: function appendStorageTimersToPage() {
+	      for (var i = 0; i < this.timers.length; i++) {
+	        if (this.timers[i].type === 'work') {
+	          var timeLeft = Math.floor(this.timers[i].timeLeft / 60000);
+	          $('ul').append('\n          <li class="' + this.timerStatus(i) + '">\n          <p class="work-timer-name-js work-timer-name">' + this.timers[i].goal + '</p>\n          <div class="timer-length timer-length-js">' + timeLeft + '</div>\n          </li>\n          ');
+	        } else {
+	          var _timeLeft = Math.floor(this.timers[i].timeLeft / 60000);
+	          $('ul').append('\n            <li class="' + this.timerStatus(i) + '">\n            <p class="break-timer-name-js break-timer-name inactive-timer-js">' + this.timers[i].goal + '</p>\n            <div class="timer-length timer-length-js">' + _timeLeft + '</div>\n            </li>\n            ');
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'appendToPageIfNothingInStorage',
+	    value: function appendToPageIfNothingInStorage() {
+	      $('ul').append('\n      <li class="active-timer-js active-timer">\n      <p class="work-timer-name-js work-timer-name" contenteditable>First work block</p>\n      <div class="timer-length timer-length-js">25</div>\n      <input type="range" min="5" max="60" step="5" value="25" class="work-timer-length-js work-timer-length">\n      </li>\n      <li class="inactive-timer-js inactive-timer">\n      <p class="break-timer-name-js break-timer-name inactive-timer-js" contenteditable>Take a break</p>\n      <div class="timer-length timer-length-js">5</div>\n      <input type="range" min="1" max="15" step="1" value="5" class="break-timer-length-js break-timer-length">\n      </li>\n      <li class="inactive-timer-js inactive-timer">\n      <p class="work-timer-name-js work-timer-name inactive-timer-js" contenteditable>Second work block</p>\n      <div class="timer-length timer-length-js">25</div>\n      <input type="range" min="5" max="60" step="5" value="25" class="work-timer-length-js work-timer-length">\n      </li>\n      <li class="inactive-timer-js inactive-timer">\n      <p class="break-timer-name-js break-timer-name inactive-timer-js" contenteditable>Take a break</p>\n      <div class="timer-length timer-length-js">5</div>\n      <input type="range" min="1" max="15" step="1" value="5" class="break-timer-length-js break-timer-length">\n      </li>\n      ');
+	    }
+	  }]);
+
+	  return Pomodoro;
+	}();
+
+	module.exports = Pomodoro;
+
+/***/ },
+/* 7 */
 /***/ function(module, exports) {
 
-	class Timer {
-	  constructor(options) {
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Timer = function () {
+	  function Timer(options) {
+	    _classCallCheck(this, Timer);
+
 	    this.startTime = options.startTime || null;
 	    this.endTime = options.endTime || null;
 	    this.pauseTime = options.pauseTime || 0;
@@ -10822,57 +10811,65 @@
 	    this.goal = options.goal || 'Take a Break';
 	  }
 
-	  convertMinToMilliSeconds(minutes) {
-	    return minutes * 60 * 1000;
-	  }
-
-	  startTimer() {
-	    this.currentState = 'running';
-	    this.startTime = Date.now();
-	    this.endTime = this.startTime + this.timeLeft;
-	  }
-
-	  changeTime(updatedTimeInMinutes) {
-	    this.timeLeft = this.convertMinToMilliSeconds(updatedTimeInMinutes);
-	  }
-
-	  pauseTimer() {
-	    this.currentState = 'paused';
-	    this.pauseTime = Date.now();
-	    this.timeLeft = this.endTime - this.pauseTime;
-	  }
-
-	  updateTimeLeft() {
-	    if (this.startTime === null) return;
-	    this.timeLeft = this.endTime - Date.now();
-	  }
-
-	  resumeTimer() {
-	    if(this.startTime === null) this.startTime = Date.now();
-	    this.currentState = 'running';
-	    this.endTime = Date.now() + this.timeLeft;
-	  }
-
-	  resetTimer() {
-	    this.startTime = null;
-	    this.endTime = null;
-	    this.pauseTime = 0;
-	    this.currentState = 'unstarted';
-	    if (this.type === 'break') {
-	      this.timeLeft = 6000;
-	      return;
+	  _createClass(Timer, [{
+	    key: 'convertMinToMilliSeconds',
+	    value: function convertMinToMilliSeconds(minutes) {
+	      return minutes * 60 * 1000;
 	    }
-	    if (this.type === 'work') {
-	      this.timeLeft = 10000;
-	      return;
+	  }, {
+	    key: 'startTimer',
+	    value: function startTimer() {
+	      this.currentState = 'running';
+	      this.startTime = Date.now();
+	      this.endTime = this.startTime + this.timeLeft;
 	    }
+	  }, {
+	    key: 'changeTime',
+	    value: function changeTime(updatedTimeInMinutes) {
+	      this.timeLeft = this.convertMinToMilliSeconds(updatedTimeInMinutes);
+	    }
+	  }, {
+	    key: 'pauseTimer',
+	    value: function pauseTimer() {
+	      this.currentState = 'paused';
+	      this.pauseTime = Date.now();
+	      this.timeLeft = this.endTime - this.pauseTime;
+	    }
+	  }, {
+	    key: 'updateTimeLeft',
+	    value: function updateTimeLeft() {
+	      if (this.startTime === null) return;
+	      this.timeLeft = this.endTime - Date.now();
+	    }
+	  }, {
+	    key: 'resumeTimer',
+	    value: function resumeTimer() {
+	      if (this.startTime === null) this.startTime = Date.now();
+	      this.currentState = 'running';
+	      this.endTime = Date.now() + this.timeLeft;
+	    }
+	  }, {
+	    key: 'resetTimer',
+	    value: function resetTimer() {
+	      this.startTime = null;
+	      this.endTime = null;
+	      this.pauseTime = 0;
+	      this.currentState = 'unstarted';
+	      if (this.type === 'break') {
+	        this.timeLeft = 6000;
+	        return;
+	      }
+	      if (this.type === 'work') {
+	        this.timeLeft = 10000;
+	        return;
+	      }
+	    }
+	  }]);
 
-	  }
-	}
+	  return Timer;
+	}();
 
 	module.exports = Timer;
-
-
 
 	// String.prototype.toHHMMSS = function () {
 	//     var sec_num = parseInt(this, 10); // don't forget the second param
@@ -10885,15 +10882,6 @@
 	//     if (seconds < 10) {seconds = "0"+seconds;}
 	//     return hours+':'+minutes+':'+seconds;
 	// }
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	const Pomodoro = __webpack_require__(6);
-	const Timer = __webpack_require__(8);
-
 
 /***/ }
 /******/ ]);

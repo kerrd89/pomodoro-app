@@ -9,12 +9,25 @@ module.exports = {
     path: __dirname,
     filename: "[name].bundle.js"
   },
+  // module: {
+  // loaders: [
+  //   // { test: /\.js$/, exclude: '/node_modules/', loader: 'babel-loader' },
+  //   { test: /\.css$/, loader: "style!css!" },
+  //   { test: /\.scss$/, loader: "style!css!sass" }
+  // ]},
+
   module: {
-  loaders: [
-    // { test: /\.js$/, exclude: '/node_modules/', loader: 'babel-loader' },
-    { test: /\.css$/, loader: "style!css!" },
-    { test: /\.scss$/, loader: "style!css!sass" }
-  ]},
+    loaders: [
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015' },
+      { test: /\.svg/, loader: "svg-url-loader" },
+      { test: /\.png$/, loader: "url-loader",
+      query: { mimetype: "image/png" }},
+      { test: /\.css$/, loader: "style!css" },
+      { test: /\.scss$/, loader: "style!css!resolve-url!sass?sourceMap" }
+    ]
+  },
+
+
   resolve: {
     extensions: ['', '.js', '.json', '.scss', '.css']
   }
