@@ -1,30 +1,41 @@
+$primary-text-color: #F2EBBF;
+$primary-timer-color: #d7f7b7;
+$highlighted-text-color: #FFFFFF;
+$button-primary-color: rgba(121,110,110,0.50);
+$button-secondary-color: rgba(121,110,110,0.70);
+$primary-box-shadow: 0 25px 40px rgba(91, 91, 91, 0.3);
+$smaller-box-shadow: 0 5px 15px rgba(91, 91, 91, 0.3);
+$primary-font-style: 'Lato', sans-serif;
 
-$primary-text-color: red;
 
 body {
-  font-family: 'Lato', sans-serif;
-  background: url('/lib/images/fields.jpg');
+  font-family: $primary-font-style;
+  background: url(./lib/images/mountain.jpg);
   background-size: cover;
   z-index: -2;
 }
 
 h1 {
-  color: $primary-text-color;
   text-align: center;
   margin: 20px;
 }
 
+p {
+  display: inline-block;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
 .current-time {
   font-size: 7em;
-  opacity: .50;
-  color: white;
+  opacity: 0.50;
+  color: $highlighted-text-color;
 }
 
 .timers-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
   width: 100vw;
   height: 100vh;
   max-width: 400px;
@@ -34,13 +45,13 @@ h1 {
 .inactive-timer {
   padding: 20px;
 }
+
 .active-timer {
-  background-image: linear-gradient(90deg, #7A6E6E  0%, #5E5E5E  100%);
-  box-shadow: 0 25px 40px rgba(91, 91, 91, 0.3);
+  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 100%);
+  box-shadow: $primary-box-shadow;
   padding: 20px;
   font-size: 1em;
-  color: white;
-  // display: inherit;
+  color: $highlighted-text-color;
 }
 
 .gradient {
@@ -48,50 +59,58 @@ h1 {
   height: 100vh;
   width: 100vw;
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: -1;
 }
 
 ul {
-  background-image: linear-gradient(90deg, rgba(122, 110, 110, 0.6)  0%, rgba(94, 94, 94, 0.6)  100%);
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 li {
-  color: #F2EBBF;
+  background-image: linear-gradient(90deg, rgba(122, 110, 110, 0.6) 0%, rgba(94, 94, 94, 0.6) 100%);
+  color: $primary-text-color;
   align-items: center;
+  transition-duration: 0.2s;
 }
 
 button {
-  border:none;
-  color: #F2EBBF;
-  font-family: lato;
-  background: rgba(121,110,110,0.70);
+  border: none;
+  color: $primary-text-color;
+  font-family: $primary-font-style;
+  background: $button-primary-color;
 }
 
 .start-button {
-  margin: 5px;
+  margin: 10px;
   font-size: 2em;
   padding: 10px 5px;
   width: 40%;
 }
 
-.pause-button, .resume-button, .reset-button{
+.pause-button,
+.reset-button,
+.resume-button {
   margin-right: auto;
-  font-size: .8em;
+  font-size: 0.8em;
   width: 40%;
   height: 70px;
   width: 70px;
   border-radius: 50px;
+  margin: 0 10px 10px;
+  transition-duration: 0.2s;
 }
 
 .pause-button {
-  background-image: url('/lib/images/pause.svg');
+  background-image: url(./lib/images/pause.svg);
   background-size: cover;
 }
+
 .resume-button {
-  background-image: url('/lib/images/play.svg');
+  background-image: url(./lib/images/play.svg);
   background-size: cover;
 }
 
@@ -101,13 +120,12 @@ button {
   flex-direction: flex-row;
   width: 100%;
   justify-content: center;
-  align-items: flex-end;
-  // background: grey;
+  align-items: center;
 }
 
 .timer-length {
   border-radius: 50px;
-  border: 3px solid #d7f7b7;
+  border: 3px solid $primary-timer-color;
   height: 24px;
   width: 30px;
   padding-top: 6px;
@@ -116,8 +134,8 @@ button {
   text-align: center;
 }
 
-.work-timer-name,
-.break-timer-name {
+.break-timer-name,
+.work-timer-name {
   display: inline-block;
 }
 
@@ -126,19 +144,31 @@ button {
   flex-direction: column;
   height: 100%;
 }
+// Toggle Classes
+.pause-button:hover,
+.reset-button:hover,
+.resume-button:hover,
+.start-button:hover {
+  background-color: $button-secondary-color;
+  box-shadow: $smaller-box-shadow;
+}
 
-
+p:focus {
+  font-size: 1.1em;
+  outline: none;
+  color: $primary-timer-color;
+}
 
 .blink {
   color: #e27575;
   border-color: #e27575;
 }
 
-
-
-
-
-
-
+.active-timer:hover {
+  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 90%);
+}
+.inactive-timer:hover {
+  background-image: linear-gradient(90deg, rgba(122, 110, 110, 0.6) 0%, rgba(94, 94, 94, 0.7) 100%);
+}
 
 @import 'slider'
