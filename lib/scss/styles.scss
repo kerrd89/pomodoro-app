@@ -10,7 +10,7 @@ $primary-font-style: 'Lato', sans-serif;
 
 body {
   font-family: $primary-font-style;
-  background: url('/lib/images/wheat.jpg');
+  background: url(./lib/images/mountain.jpg);
   background-size: cover;
   z-index: -2;
 }
@@ -105,12 +105,12 @@ button {
 }
 
 .pause-button {
-  background-image: url('/lib/images/pause.svg');
+  background-image: url(./lib/images/pause.svg);
   background-size: cover;
 }
 
 .resume-button {
-  background-image: url('/lib/images/play.svg');
+  background-image: url(./lib/images/play.svg);
   background-size: cover;
 }
 
@@ -164,10 +164,11 @@ p:focus {
   border-color: #e27575;
 }
 
-.active-timer:hover,
+.active-timer:hover {
+  background-image: linear-gradient(90deg, #7A6E6E 0%, #5E5E5E 90%);
+}
 .inactive-timer:hover {
-  width: 91%;
-  // background: rgba(69, 69, 69, 0.38);
+  background-image: linear-gradient(90deg, rgba(122, 110, 110, 0.6) 0%, rgba(94, 94, 94, 0.7) 100%);
 }
 
-// @import 'slider'
+@import 'slider'
