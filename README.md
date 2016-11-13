@@ -7,7 +7,7 @@
 
 ## Introduction
 
-![](http://g.recordit.co/jTxLUYzLFR.gif)
+![](http://g.recordit.co/In6yzE2w58.gif)
 
 This project is also live on github pages at [https://kerrd89.github.io/pomodoro-app/](https://kerrd89.github.io/pomodoro-app/).
 
