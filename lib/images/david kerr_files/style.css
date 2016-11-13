@@ -1,0 +1,281 @@
+body {
+}
+
+header {
+  display: flex;
+  flex-direction: flex-row;
+  align-items: middle;
+  width: 100%;
+  height: 50px;
+  outline: 5px solid black;
+}
+
+h1 {
+  width: 100%;
+  margin: auto;
+}
+
+.week1 {
+  width: 65%;
+  height: 100%;
+}
+
+section {
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: middle;
+  margin: auto;
+}
+
+#fire {
+  background-color: #DE6F5D;
+  font-family: 'Unna', serif;
+  font-size: 130%;
+}
+
+#water {
+  background-color: #DDDBD8;
+  font-family: 'Lato', sans-serif;
+  font-size: 125%;
+}
+
+li p {
+  width: 25%;
+  margin: auto;
+}
+
+#two {
+  background-color: rgba(235,234,109, .5);
+  max-width: 800px;
+  height: 90vh;
+  position: relative;
+  margin: auto;
+  letter-spacing: .4px;
+}
+
+#first-line {
+  margin-top: 20%;
+  margin-right: 10px;
+  display: inline;
+  border-bottom: 20px solid #0A94E3;
+  width: 10%;
+  float: left;
+}
+#first-line-text {
+  color: #0A94E3;
+  font-size: 2em;
+  font-weight: bold;
+  display: inline;
+  font-family: 'Vollkorn', serif;
+  margin-top: 20%;
+  width: 50%;
+  float: left;
+}
+
+.bluebear {
+  left: 17%;
+  top: 30%;
+  height: 120px;
+  position: absolute;
+}
+
+
+#second-line {
+  border-bottom: 20px solid #0A94E3;
+  top: 45%;
+  position: absolute;
+  width: 30%;
+}
+#second-line-text {
+  font-size: 1.5em;
+  left: 30%;
+  top: 45%;
+  font-family: 'Open Sans', sans-serif;
+  position: absolute;
+  width: 60%;
+  margin-left: 10px;
+}
+
+#third-line {
+  border-bottom: 20px solid black;
+  top: 70%;
+  position: absolute;
+  width: 50%;
+}
+#third-line-text {
+  font-family: 'Vollkorn', serif;
+  font-weight: bold;
+  font-size: 2em;
+  left: 50%;
+  top: 70%;
+  position: absolute;
+  width: 50%;
+  margin-left: 10px;
+}
+
+#three {
+  display: flex;
+  flex-direction: flex-row;
+  max-width: 800px;
+  margin: auto;
+}
+
+#black-to-white {
+  height: 90vh;
+  width: 50%;
+  background:
+   repeating-radial-gradient(
+     circle at 0 0,
+     #eee,
+     #ccc 50px
+   );
+  outline: 3px solid black;
+}
+
+#white-to-black {
+  height: 90vh;
+  width: 50%;
+  background: linear-gradient(to left,#efefef,black);
+
+  outline: 3px solid black;
+}
+
+
+#four {
+  margin: 0;
+  padding: 0;
+  width: 500px;
+  height: 1vh;
+}
+
+#clouds{
+	padding: 100px 0;
+	background: #c9dbe9;
+	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+}
+
+.cloud {
+	width: 200px; height: 60px;
+	background: #fff;
+
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+
+	position: relative;
+}
+
+.cloud:before, .cloud:after {
+	content: '';
+	position: absolute;
+	background: #fff;
+	width: 100px; height: 80px;
+	position: absolute; top: -15px; left: 10px;
+
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+}
+
+
+.cloud:after {
+	width: 120px; height: 120px;
+	top: -55px; left: auto; right: 15px;
+}
+
+/*Time to animate*/
+.x1 {
+	-webkit-animation: moveclouds 15s linear infinite;
+	-moz-animation: moveclouds 15s linear infinite;
+	-o-animation: moveclouds 15s linear infinite;
+}
+
+/*variable speed, opacity, and position of clouds for realistic effect*/
+.x2 {
+	left: 200px;
+
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 0.6; /*opacity proportional to the size*/
+
+	/*Speed will also be proportional to the size and opacity*/
+	/*More the speed. Less the time in 's' = seconds*/
+	-webkit-animation: moveclouds 25s linear infinite;
+	-moz-animation: moveclouds 25s linear infinite;
+	-o-animation: moveclouds 25s linear infinite;
+}
+
+.x3 {
+	left: -250px; top: -200px;
+
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+
+	-webkit-animation: moveclouds 20s linear infinite;
+	-moz-animation: moveclouds 20s linear infinite;
+	-o-animation: moveclouds 20s linear infinite;
+}
+
+.x4 {
+	left: 470px; top: -250px;
+
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	transform: scale(0.75);
+	opacity: 0.75; /*opacity proportional to the size*/
+
+	-webkit-animation: moveclouds 18s linear infinite;
+	-moz-animation: moveclouds 18s linear infinite;
+	-o-animation: moveclouds 18s linear infinite;
+}
+
+.x5 {
+	left: -150px; top: -150px;
+
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+
+	-webkit-animation: moveclouds 20s linear infinite;
+	-moz-animation: moveclouds 20s linear infinite;
+	-o-animation: moveclouds 20s linear infinite;
+}
+
+@-webkit-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+
+.x4 p {
+  z-index: 3;
+}
+
+
+#primary-four {
+  font-family: 'Abril Fatface', cursive;
+  maring: auto;
+  width: 100%;
+}
+
+#primary-four {
+  font-family: 'Abril Fatface', cursive;
+}
