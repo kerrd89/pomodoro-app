@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://localhost:8080/webpack-dev-server/public/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"><script type="text/javascript" charset="utf-8" src="./index_files/live.bundle.js"></script><style type="text/css">*,:after,:before{box-sizing:border-box}body,html{margin:0;padding:0;height:100%;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}.header{width:100%;height:30px;padding:0 10px;border-left:10px solid #a3be8c;font-size:12px;line-height:30px;color:#eff1f5;background:#343d46;overflow:hidden}#iframe{position:absolute;top:30px;right:0;bottom:0;left:0;width:100%;height:-ms-calc(100% - 30px);height:-o-calc(100% - 30px);height:calc(100% - 30px);border:0}#errors{width:100%;margin:0;padding:10px;font-family:monospace;font-size:14px;line-height:1.4;color:#eff1f5;background:#bf616a;overflow:auto}#okness{font-weight:700}</style></head><body><div class="header" style="border-color: rgb(235, 203, 139);"><span id="okness">Errors while compiling.</span> <span id="status">App updated with errors. No reload!</span></div><pre id="errors" style="display: block;">
+./lib/components/Application.js
+Module build failed: Duplicate declaration "user"
+
+  31 | 
+  32 |   addNewMessage(user, newMessage) {
+&gt; 33 |      const { user, draftMessage } = this.state;
+     |              ^
+  34 |      reference.push({
+  35 |        user: pick(user, 'displayName', 'email', 'uid'),
+  36 |        content:  newMessage,
+
+BabelLoaderError: Duplicate declaration "user"
+
+  31 | 
+  32 |   addNewMessage(user, newMessage) {
+&gt; 33 |      const { user, draftMessage } = this.state;
+     |              ^
+  34 |      reference.push({
+  35 |        user: pick(user, 'displayName', 'email', 'uid'),
+  36 |        content:  newMessage,
+
+    at transpile (/Users/davidkerr/Projects/react-chatroom/node_modules/babel-loader/index.js:52:13)
+    at Object.module.exports (/Users/davidkerr/Projects/react-chatroom/node_modules/babel-loader/index.js:131:12)
+ @ ./lib/index.js 9:19-54
+
+</pre><div id="warnings"></div><iframe id="iframe" src="javascript:;" allowfullscreen="" style="display: none;" src="./index_files/saved_resource.html"></iframe></body></html>
